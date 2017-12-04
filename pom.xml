@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ankel</groupId>
+  <artifactId>advent-2017</artifactId>
+  <version>0.1-SNAPSHOT</version>
+
+  <properties>
+
+    <java.version>1.8</java.version>
+    <!-- JDK -->
+    <jdk.source.version>1.8</jdk.source.version>
+    <jdk.target.version>1.8</jdk.target.version>
+
+    <plugin.compiler.version>3.5.1</plugin.compiler.version>
+    <plugin.surefire.version>2.18.1</plugin.surefire.version>
+
+    <deps.commons-lang3.version>3.4</deps.commons-lang3.version>
+    <deps.junit.version>4.12</deps.junit.version>
+    <deps.lombok.version>1.16.16</deps.lombok.version>
+    <deps.guava.version>23.5-jre</deps.guava.version>
+
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${deps.lombok.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${deps.guava.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${deps.commons-lang3.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${deps.junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${plugin.compiler.version}</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${plugin.surefire.version}</version>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
