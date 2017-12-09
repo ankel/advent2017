@@ -77,8 +77,6 @@ public class Day8Registers
     System.out.println(max);
 
     System.out.println(System.currentTimeMillis() - start);
-
-
   }
 
   private static Instruction toInstruction(final String l)
