@@ -143,7 +143,8 @@ public class Day7Recursive
   public static Stream<String> streamFromResFile(final String s) throws URISyntaxException, IOException
   {
     return Files
-        .lines(Paths.get(Resources.getResource(s).toURI()));
+        .lines(Paths.get(Resources.getResource(s).toURI()))
+        .filter(line -> !line.isEmpty());
   }
 
   @Getter

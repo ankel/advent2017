@@ -96,6 +96,8 @@ public class Day12ConnectedGraph
               .forEach((i) -> visited.put(i, true));
         }
 
+        System.out.println(size);
+
         seen.addAll(visited.keySet());
         groupCount++;
       }
