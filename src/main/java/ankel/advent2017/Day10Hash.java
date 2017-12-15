@@ -19,7 +19,7 @@ import com.google.common.base.Preconditions;
 public class Day10Hash
 {
   private static final int SIZE = 256;
-  private static final int[] INPUT = new int[]{197, 97, 204, 108, 1, 29, 5, 71, 0, 50, 2, 255, 248, 78, 254, 63};
+  //  private static final int[] INPUT = new int[]{197, 97, 204, 108, 1, 29, 5, 71, 0, 50, 2, 255, 248, 78, 254, 63};
   private static final int[] SUFFIX = new int[]{17, 31, 73, 47, 23};
   private static final String INPUT_STRING = "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63";
   private static final int ROUND = 64;
@@ -28,13 +28,23 @@ public class Day10Hash
   public static void main(final String[] args)
   {
     final long start = System.currentTimeMillis();
+
+//    final int[] input = INPUT;
+//    System.out.println(hash[0] * hash[1]);
+
+    System.out.println(calcHash(INPUT_STRING));
+
+    System.out.println(System.currentTimeMillis() - start);
+  }
+
+  static String calcHash(final String inputString)
+  {
+    final int[] input = processString(inputString);
+
     final int[] hash = initArr(SIZE);
 
     int currentPosition = 0;
     int skip = 0;
-
-//    final int[] input = INPUT;
-    final int[] input = processString(INPUT_STRING);
 
     for (int round = 0; round < ROUND; ++round)
     {
@@ -55,11 +65,7 @@ public class Day10Hash
       sb.append(String.format("%02x", h));
     }
 
-//    System.out.println(hash[0] * hash[1]);
-
-    System.out.println(sb.toString());
-
-    System.out.println(System.currentTimeMillis() - start);
+    return sb.toString();
   }
 
   private static int[] toDenseHash(final int[] hash, final int step)
