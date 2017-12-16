@@ -65,19 +65,18 @@ public class Day13Firewall
       caught = false;
       for (int currentTime = 0; currentTime <= max; ++currentTime)
       {
-        final int currentLayer = currentTime + delay;
-        final Layer currentFirewallLayer = firewall.get(currentLayer);
+        final Layer currentFirewallLayer = firewall.get(currentTime);
         if (currentFirewallLayer != null)
         {
-          final int currentLayerBlock = currentFirewallLayer.moveForward(currentTime);
+          final int currentLayerBlock = currentFirewallLayer.moveForward(currentTime + delay);
           if (currentLayerBlock == currentBlock)
           {
             caught = true;
+            delay++;
             break;
           }
         }
       }
-      delay++;
     }
 
     System.out.println(delay);
