@@ -117,7 +117,7 @@ public class Day16Dance2
       }
     }
 
-    System.out.println(roundResults.get(ROUNDS % (j - i)));
+    System.out.println(roundResults.get(i + ROUNDS % (j - i)));
   }
 
   static String printLine(final char[] line, final int fixPoint)
