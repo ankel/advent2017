@@ -2,6 +2,8 @@ package ankel.advent2017;
 
 import com.google.common.collect.ImmutableList;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
@@ -12,11 +14,11 @@ import java.util.stream.Collectors;
  */
 public class Day19Maze
 {
-  private static final Vector RIGHT = new Vector(0, 1);
-  private static final Vector DOWN = new Vector(1, 0);
-  private static final Vector LEFT = new Vector(0, -1);
-  private static final Vector UP = new Vector(-1, 0);
-  private static final List<Vector> DIRECTIONS = ImmutableList.of(RIGHT, DOWN, LEFT, UP);
+  public static final Vector RIGHT = new Vector(0, 1);
+  public static final Vector DOWN = new Vector(1, 0);
+  public static final Vector LEFT = new Vector(0, -1);
+  public static final Vector UP = new Vector(-1, 0);
+  public static final List<Vector> DIRECTIONS = ImmutableList.of(RIGHT, DOWN, LEFT, UP);
 
   public static void main(final String[] args) throws Exception
   {
@@ -100,23 +102,25 @@ public class Day19Maze
 
   @EqualsAndHashCode
   @ToString
-  private static class Vector
+  @Getter
+  @Setter
+  public static class Vector
   {
-    private final int x;
-    private final int y;
+    private int x;
+    private int y;
 
-    private Vector(final int x, final int y)
+    public Vector(final int x, final int y)
     {
       this.x = x;
       this.y = y;
     }
 
-    private Vector move(final Vector direction)
+    public Vector move(final Vector direction)
     {
       return new Vector(x + direction.x, y + direction.y);
     }
 
-    private char getChar(final List<String> maze)
+    public char getChar(final List<String> maze)
     {
       if (x < 0 || x >= maze.size())
       {
@@ -129,7 +133,7 @@ public class Day19Maze
       return maze.get(x).charAt(y);
     }
 
-    private int dotProduct(final Vector another)
+    public int dotProduct(final Vector another)
     {
       return x * another.x + y * another.y;
     }
