@@ -1,7 +1,5 @@
 package ankel.advent2017;
 
-import lombok.ToString;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -129,7 +127,6 @@ public class Day20Particles
     }
   }
 
-  @ToString
   private static final class Particle
   {
     private static final Pattern REGEX = Pattern.compile("[apv]=<(-?\\d+),(-?\\d+),(-?\\d+)");
