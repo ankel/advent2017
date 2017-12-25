@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static com.google.common.math.IntMath.*;
+
 /**
  * @author Binh Tran
  */
@@ -25,17 +27,10 @@ public class Day23Instructions
 
     final Map<String, BigInteger> registers = new HashMap<>();
     int instructionPointer = 0;
-//    int mulCount = 0;
-    registers.put("a", BigInteger.ONE);
-
-    int count = 0;
+    int mulCount = 0;
 
     while (0 <= instructionPointer && instructionPointer < program.size())
     {
-      if (++count % 100000 == 0)
-      {
-        System.out.println(registers);
-      }
 //      System.out.println(instructionPointer);
       final String instruction = program.get(instructionPointer);
 
@@ -63,7 +58,7 @@ public class Day23Instructions
           registers.compute(
               parts.get(1),
               (__, oldVal) -> oldVal.multiply(secondOperand));
-//          mulCount++;
+          mulCount++;
           break;
         case "jnz":
 //          System.out.println(instructionPointer + 1 + ": " + firstOperand);
@@ -78,7 +73,9 @@ public class Day23Instructions
       instructionPointer++;
     }
 
-    System.out.println(registers.get("h"));
+    System.out.println(mulCount);
+
+    System.out.println(part2());
   }
 
   private static BigInteger processOperand(final Map<String, BigInteger> registers, final String operand)
@@ -91,5 +88,25 @@ public class Day23Instructions
     {
       return BigInteger.valueOf(Long.parseLong(operand));
     }
+  }
+
+  /**
+   * Algorithm adapted from solution at https://github.com/dp1/AoC17/blob/master/day23.5.txt
+   */
+  private static int part2()
+  {
+    final int b = 65 * 100 + 100000;
+    final int c = b + 17000;
+    int h = 0;
+
+    for (int i = b; i < c + 1; i += 17)
+    {
+      if (!isPrime(i))
+      {
+        h++;
+      }
+    }
+
+    return h;
   }
 }
